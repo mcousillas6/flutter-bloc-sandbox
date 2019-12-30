@@ -2,6 +2,7 @@ import 'package:movieapp/Core/BlocProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:movieapp/People/Person.dart';
 import 'package:movieapp/People/PeopleBloc.dart';
+import 'package:movieapp/Widgets/WidgetPeopleListItem.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -40,25 +41,8 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    color: Colors.black,
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            child: Text(
-                                snapshot.data[index].name,
-                                style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
-                              )
-                            ),
-                            Text(snapshot.data[index].mass, style: TextStyle(color: Colors.amber))
-                          ],
-                        ),
-                      ),
-                    )
-                  );
+                  return WidgetPeopleListItem(
+                    person: snapshot.data[index]);
                 },
               ),
             );
